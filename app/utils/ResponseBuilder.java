@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class ResponseBuilder {
 
-    public static Map<String, Object> buildResponse(String resmsgId) {
+    public static Map<String, Object> buildResponse(String resmsgId,String statusMsg,int code,String message) {
         Map<String, Object> response = new HashMap<>();
         response.put("id", "Api.read");
         response.put("ver", "3.0.5");
@@ -20,11 +20,47 @@ public class ResponseBuilder {
 
         HashMap<String, Object> params = new HashMap<>();
         params.put("resmsgId", resmsgId);
-        params.put("status", "Success");
+        params.put("status", statusMsg);
 
         response.put("params", params);
-        response.put("status", 201);
-        response.put("message", "Data added successfully");
+        response.put("status", code);
+        response.put("message", message);
+
+        return response;
+    }
+
+    public static Map<String, Object> buildResponseOnget(String statusMsg,int code,String message,List datasets) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("id", "Api.read");
+        response.put("ver", "3.0.5");
+        response.put("time", LocalDateTime.now());
+
+        HashMap<String, Object> params = new HashMap<>();
+//        params.put("resmsgId", resmsgId);
+        params.put("status", statusMsg);
+
+        response.put("params", params);
+        response.put("status", code);
+        response.put("message", message);
+        response.put("result",datasets);
+
+        return response;
+    }
+
+    public static Map<String, Object> buildResponseOngetById(String statusMsg,int code,String message,Datasets datasets) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("id", "Api.read");
+        response.put("ver", "3.0.5");
+        response.put("time", LocalDateTime.now());
+
+        HashMap<String, Object> params = new HashMap<>();
+//    params.put("resmsgId", resmsgId);
+        params.put("status", statusMsg);
+
+        response.put("params", params);
+        response.put("status", code);
+        response.put("message", message);
+        response.put("result",datasets);
 
         return response;
     }
