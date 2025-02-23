@@ -1,7 +1,6 @@
 package utils;
 
 
-
 import models.Datasets;
 import models.Status;
 
@@ -10,16 +9,16 @@ import java.util.Optional;
 public class Validator {
 
     public static Optional<String> validate(Datasets dataset) {
-        if (dataset.getId() == null||dataset.getId().isBlank()|| dataset.getId().isEmpty()) {
+        if (dataset.getId() == null || dataset.getId().isBlank() || dataset.getId().isEmpty()) {
             return Optional.of("ID cannot be null or empty");
         }
         if (dataset.getStatus() == null || dataset.getStatus().toString().isBlank()) {
             return Optional.of("Status required : Live, Draft, RETIRED");
         }
-        if (dataset.getDataSchema() == null || dataset.getDataSchema().values().isEmpty()||dataset.getDataSchema().isEmpty() ) {
+        if (dataset.getDataSchema() == null || dataset.getDataSchema().values().isEmpty() || dataset.getDataSchema().isEmpty()) {
             return Optional.of("Data schema cannot be null or empty");
         }
-        if (dataset.getRouteConfig() == null ||dataset.getRouteConfig().isEmpty()||dataset.getRouteConfig().values().isEmpty()) {
+        if (dataset.getRouteConfig() == null || dataset.getRouteConfig().isEmpty() || dataset.getRouteConfig().values().isEmpty()) {
             return Optional.of("Route config cannot be null or empty");
         }
 //        if (dataset.getUpdatedBy() == null ) {
@@ -39,46 +38,6 @@ public class Validator {
 //        }
         return Optional.empty();
     }
-
-//    public static Optional<String> validateForupdate(Datasets dataset) {
-//
-//        if (dataset.getDataSchema() == null || dataset.getDataSchema().isEmpty()
-//                || dataset.getDataSchema().values().isEmpty()) {
-//            return Optional.of("dataSchema is required.");
-//        }
-//
-//        if (dataset.getRouteConfig() == null || dataset.getRouteConfig().isEmpty()
-//                || dataset.getRouteConfig().values().isEmpty()) {
-//            return Optional.of("Route config key & values are needed.");
-//        }
-//
-//        if (dataset.getStatus() == null || dataset.getStatus().toString().isBlank()) {
-//            return Optional.of("Status is required.");
-//        }
-//
-////        if (dataset.getId() == null || dataset.getId().isBlank()) {
-////            return Optional.of("Id field is required.");
-////        }
-//
-//
-//
-//        if (dataset.getUpdatedBy() == null) {
-//            return Optional.of("UpdatedBy fileld required in request body");
-//        }
-//
-//
-//
-//        if (dataset.getUpdatedBy().matches(".*\\d.*") || dataset.getUpdatedBy().isBlank()) {
-//            return Optional.of("UpdatedBy : should be name ");
-//        }
-//        if(dataset.getCreatedBy()!=null)
-//        {
-//            return Optional.of("Created by cannot be changed so remove from request body ");
-//        }
-//
-//
-//        return Optional.empty();
-//    }
 
     private static boolean isValidStatus(String status) {
         return status.equalsIgnoreCase("Live") ||
@@ -101,23 +60,16 @@ public class Validator {
             return Optional.of("Status is required.");
         }
 
-//        if (updates.getId() == null || updates.getId().isBlank()) {
-//            return Optional.of("Id field is required.");
-//        }
-
-
 
         if (updates.getUpdatedBy() == null) {
-            return Optional.of("UpdatedBy fileld required in request body");
+            return Optional.of("UpdatedBy field required in request body");
         }
-
 
 
         if (updates.getUpdatedBy().matches(".*\\d.*") || updates.getUpdatedBy().isBlank()) {
             return Optional.of("UpdatedBy : should be name ");
         }
-        if(updates.getCreatedBy()!=null)
-        {
+        if (updates.getCreatedBy() != null) {
             return Optional.of("Created by cannot be changed so remove from request body ");
         }
 
