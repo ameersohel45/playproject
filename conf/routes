@@ -1,0 +1,9 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+POST    /create      controllers.DatasetsController.createDataset(request: play.mvc.Http.Request)
+GET     /getall      controllers.DatasetsController.getAllDatasets()
+GET     /getbyid/:id  controllers.DatasetsController.getDatasetById(id)
+PUT    /updates/:id    controllers.DatasetsController.updateDataset(id: String,request: play.mvc.Http.Request)
+DELETE  /deletebyid/:id controllers.DatasetsController.deleteDataset(id: String)
