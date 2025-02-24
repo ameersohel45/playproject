@@ -12,13 +12,11 @@ import java.util.Map;
 
 public class DatasetsController extends Controller {
     private final DatasetsService datasetsService;
-    //private final ObjectMapper objectMapper;
     private final Validator validator;
 
     @Inject
     public DatasetsController(DatasetsService datasetsService, Validator validator) {
         this.datasetsService = datasetsService;
-        //this.objectMapper = objectMapper;
         this.validator = validator;
     }
 

@@ -80,12 +80,12 @@ public class DatasetsService {
             if (entityManager.find(Datasets.class, dataset.getId()) != null) {
                 return ResponseBuilder.buildResponse(dataset.getId(), "Failure", 409, "Dataset with same Id already exists");
             }
-
             dataset.setUpdatedBy("admin");
             dataset.setCreatedAt(LocalDateTime.now());
             dataset.setUpdatedAt(LocalDateTime.now());
             //entityManager.persist(dataset);
             dataRepository.save(dataset);
+
         } catch (InvalidFormatException e) {
             return ResponseBuilder.buildResponse("id", "Failure", 400, "Status should be Live, Draft, or RETIRED");
         } catch (Exception e) {

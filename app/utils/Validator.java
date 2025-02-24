@@ -12,11 +12,11 @@ public class Validator {
         if (dataset.getId() == null || dataset.getId().isBlank() || dataset.getId().isEmpty()) {
             return Optional.of("ID cannot be null or empty");
         }
-        if (dataset.getStatus() == null || dataset.getStatus().toString().isBlank()) {
-            return Optional.of("Status required : Live, Draft, RETIRED");
-        }
+
         if (dataset.getDataSchema() == null || dataset.getDataSchema().values().isEmpty() || dataset.getDataSchema().isEmpty()) {
             return Optional.of("Data schema cannot be null or empty");
+        }if (dataset.getStatus() == null || dataset.getStatus().toString().isBlank()) {
+            return Optional.of("Status required : Live, Draft, RETIRED");
         }
         if (dataset.getRouteConfig() == null || dataset.getRouteConfig().isEmpty() || dataset.getRouteConfig().values().isEmpty()) {
             return Optional.of("Route config cannot be null or empty");
